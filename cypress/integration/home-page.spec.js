@@ -54,6 +54,24 @@ describe("Home Page ", () => {
               .should("have.text", matchingMovies[index].title);
             })
           })
+          it("should display movies with 'xyz' in the title", () => {
+            const searchString = "xyz";
+            const matchingMovies = filterByTitle(movies, searchString);
+            if(matchingMovies.length !== 0){
+                cy.get("input").clear().type(searchString);
+                cy.get(".card").should("have.length", matchingMovies.length);
+                cy.get(".card").each(($card, index) => {
+                  cy.wrap($card)
+                  .find(".card-title")
+                  .should("have.text", matchingMovies[index].title);
+                })
+              }
+              else {
+                cy.get("input").clear().type(searchString);
+                
+        }
+            
+          })
         })
         describe("By movie genre" ,() => {
           // More later
