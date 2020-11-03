@@ -58,20 +58,13 @@ describe("Navigation", () => {
       cy.url().should("not.include", `/movies/${movieId}/reviews`);
     });
     it("navigate to the full review page when a 'Full Review' link is clicked", () => {
-      // TODO
+      cy.contains("Show Reviews").click();
+      cy.url().should("include", `/movies/${movieId}/reviews`);
+      cy.contains("Full Review").click();
+      cy.url().should("include", `/reviews/5f69e4d0cee2f6003633becf`);
+   
     });
   });
-  describe("From the Favorites page", () => {
-    beforeEach(() => {
-      cy.visit("/");
-      cy.get(".card").eq(0).find("button").click();
-      cy.get("nav").find("li").eq(2).find("a").click();
-    });
-    it("should navigate to the movies detail page and change the browser URL", () => {
-      cy.get(".card").eq(0).find("img").click();
-      cy.url().should("include", `/movies/${movies[0].id}`);
-      cy.get("h2").contains(movies[0].title);
-    });
-  });
+  
 
 });
