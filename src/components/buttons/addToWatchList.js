@@ -12,7 +12,7 @@ const AddToWatchListButton = ({ movie }) => {
     <button
       type="button"
       className="btn w-100 btn-primary"
-      
+      onClick={handleAddToWatchList}
     >
       Add to Watch List
     </button>
