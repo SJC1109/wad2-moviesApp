@@ -21,5 +21,6 @@ bundle_app:
   stage: build
   script:
     - npm run build
-  paths:
+  artifacts:
+    paths:
       - build/
