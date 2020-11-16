@@ -22,10 +22,6 @@ bundle_app:
   script:
     - npm run build
 
-stages:
-   - install
-   - build
-   - test
 e2etest:    
     stage: test
     before_script:
