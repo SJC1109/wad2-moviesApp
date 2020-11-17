@@ -3,8 +3,9 @@ image: cypress/browsers:node12.0.0-chrome73
 stages:
    - install
    - build
+   - before test after build
    - test
-   - beforetest  
+     
 # NEW
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/.npm"
@@ -58,7 +59,7 @@ test_jobX:
     - echo "test job X"
     
 exercise_job:
-  stage: beforetest
+  stage: before test after build
   only:
     - master
   script:
