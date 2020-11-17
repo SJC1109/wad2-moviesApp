@@ -4,7 +4,7 @@ stages:
    - install
    - build
    - test
-
+   - beforetest  
 # NEW
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/.npm"
@@ -56,3 +56,10 @@ test_jobX:
     - demobranch2
   script:
     - echo "test job X"
+    
+exercise_job:
+  stage: beforetest
+  only:
+    - master
+  script:
+    - echo "exercise job"
