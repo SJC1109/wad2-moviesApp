@@ -13,7 +13,7 @@ import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
 import upcomingMoviePage from "./pages/upcomingMoviePage";
 import topRatedPage from "./pages/topRatedPage";
 import watchListPage from "./pages/watchListPage";
-import creditPage from "./pages/creditPage";
+import CreditPage from "./pages/creditPage";
 const App = () => {
   return (
       <BrowserRouter>
@@ -29,8 +29,8 @@ const App = () => {
           <Route exact path="/upcoming/watchlist" component={watchListPage} />
           <Route exact path="/movies/upcoming" component={upcomingMoviePage} />
           <Route exact path="/movies/top_rated" component={topRatedPage} />
-          <Route exact path="/movies/:id/credits" component={creditPage} />
           <Route path="/movies/:id" component={MoviePage} />
+          <Route path="/credit/:id" component={CreditPage}/>
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />
         </Switch>

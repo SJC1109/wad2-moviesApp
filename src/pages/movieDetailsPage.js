@@ -1,14 +1,23 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link, Route, withRouter } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import useMovie from "../hooks/useMovie";
+import {getMovieCredits} from '../api/tmdb-api'
+import SimilarMovie from "../components/similarMovie"; 
+import SimilarMovies from "../components/similarMovies";
+import MovieCredits from "../components/movieCredits";
 
 const MoviePage = props => {
   const { id } = props.match.params;
-  const [movie] = useMovie(id);
-    // NEW
+  const [movie] = useMovie(id)  
+  const [setCasts] = useState([])
+
+  useEffect(()=>{
+    getMovieCredits(id).then(setCasts)
+  },[id])
+
   return (
     <>
     {movie ? (
@@ -16,21 +25,53 @@ const MoviePage = props => {
         <PageTemplate movie={movie}>
           <MovieDetails movie={movie} />
         </PageTemplate>
-        <div className="row">
-          <div className="col-12 ">
+       
+        <div className="row" >
+          <div className="col-12  btn-group btn-group-justified" >
             {!props.history.location.pathname.endsWith("/reviews") ? (
               <Link
-                className="btn btn-primary btn-block active"
+                className="btn btn-primary  "
                 to={`/movies/${id}/reviews`}
               >
                 Show Reviews (Extracts)
               </Link>
             ) : (
               <Link
-                className="btn btn-primary btn-block active"
+                className="btn btn-primary "
                 to={`/movies/${id}`}
               >
                 Hide Reviews 
+              </Link>
+            )}
+            {!props.history.location.pathname.endsWith("/credits") ? (
+              <Link
+                className="btn btn-primary "
+                to={`/movies/${id}/credits`}
+              >
+                Show Credits
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary "
+                to={`/movies/${id}`}
+              >
+                Hide Credits
+              </Link>
+            )}
+
+            {!props.history.location.pathname.endsWith("/similar") ? (
+              <Link
+                className="btn btn-primary "
+                to={`/movies/${id}/similar`}
+              >
+                Show SimilarMovies
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary "
+                to={`/movies/${id}`}
+              >
+                Hide SimilarMovies
               </Link>
             )}
           </div>
@@ -39,25 +80,15 @@ const MoviePage = props => {
           path={`/movies/:id/reviews`}
           render={props => <MovieReviews movie={movie} {...props} />}
         />
-        <nav className="navbar navbar-expand justify-content-center">
-        <ul className="navbar-nav">
-          <li className="nav-item">
-          <Link className="nav-link text-black" to={`/movies/${id}`}>
-              Details
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-black" to={`/movies/${id}/credits`}>
-              Cast & Credit
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-black" to="/movies/favorites">
-              Similar Films
-            </Link>
-          </li>
-        </ul>
-      </nav>
+        <Route
+          path={`/movies/:id/credits`}
+          render={props => <MovieCredits movie={movie} {...props} />}
+        />
+        <Route
+          path={`/movies/:id/similar`}
+          render={props => <SimilarMovies movie={movie} {...props} />}
+        />
+       
       </>
     ) : (
       <p>Waiting for movie details</p>
