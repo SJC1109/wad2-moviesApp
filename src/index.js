@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Redirect, Switch,} from "react-router-dom"    // 
 import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
 import upcomingMoviePage from "./pages/upcomingMoviePage";
 import topRatedPage from "./pages/topRatedPage";
+import now_playingPage from "./pages/now_playingMoviePage";
 import watchListPage from "./pages/watchListPage";
 import CreditPage from "./pages/creditPage";
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route exact path="/upcoming/watchlist" component={watchListPage} />
           <Route exact path="/movies/upcoming" component={upcomingMoviePage} />
+          <Route exact path="/movies/now_playing" component={now_playingPage} />
           <Route exact path="/movies/top_rated" component={topRatedPage} />
           <Route path="/movies/:id" component={MoviePage} />
           <Route path="/reviews/:id" component={MovieReviewPage} />
