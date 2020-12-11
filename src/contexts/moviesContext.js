@@ -45,6 +45,16 @@ const reducer = (state, action) => {
         upcoming: [...state.upcoming],
         top_rated: [...state.top_rated],
       };
+      case "add-word":
+      return {
+        movies: state.movies.map((m) =>
+          m.id === action.payload.movie.id
+            ? {...m, review: action.payload.word}
+            : m
+        ),
+        upcoming: [...state.upcoming],
+        top_rated: [...state.top_rated]
+      };
     default:
       return state;
   }
@@ -69,7 +79,9 @@ const MoviesContextProvider = (props) => {
   const addReview = (movie, review) => {
     dispatch({ type: "add-review", payload: { movie, review } });
   };
-
+  const addWord = (movie, word) => {
+    dispatch({ type: "add-word", payload: { movie, word } });
+  };
   useEffect(() => {
     getMovies().then((movies) => {
       dispatch({ type: "load", payload: { movies } });
@@ -99,6 +111,7 @@ const MoviesContextProvider = (props) => {
         top_rated: state.top_rated,
         addToFavorites: addToFavorites,
         addReview: addReview,
+        addWord: addWord,
         addToWatchList: addToWatchList,
         addToTopList: addToTopList
       }}

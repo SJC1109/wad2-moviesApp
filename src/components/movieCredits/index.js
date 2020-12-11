@@ -19,6 +19,7 @@ export default ({ movie }) => {
           <th scope="col">Photo</th>
           <th scope="col">Name</th>
           <th scope="col">Character</th>
+          <th scope="col">Leave words</th>
           <th scope="col">More</th>
         </tr>
       </thead>
@@ -32,6 +33,20 @@ export default ({ movie }) => {
           /></td>
                 <td>{c.name}</td>
                 <td>{excerpt(c.character)}</td>
+                <td>
+                  {" "}
+                  <Link
+                    to={{
+                      pathname: `/words/form`,
+                      state: {
+                        cast: c,
+                        movie: movie
+                      }
+                    }}
+                  >
+                    Leave words
+                  </Link>
+                </td>
                 <td>
                   {" "}
                   <Link
