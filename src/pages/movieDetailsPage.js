@@ -5,7 +5,6 @@ import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import useMovie from "../hooks/useMovie";
 import {getMovieCredits} from '../api/tmdb-api'
-import SimilarMovie from "../components/similarMovie"; 
 import SimilarMovies from "../components/similarMovies";
 import MovieCredits from "../components/movieCredits";
 
@@ -25,9 +24,9 @@ const MoviePage = props => {
         <PageTemplate movie={movie}>
           <MovieDetails movie={movie} />
         </PageTemplate>
-       
+       <space>
         <div className="row" >
-          <div className="col-12  btn-group btn-group-justified" >
+          <div className="col-12  btn-group btn-group-justified " >
             {!props.history.location.pathname.endsWith("/reviews") ? (
               <Link
                 className="btn btn-primary  "
@@ -76,6 +75,7 @@ const MoviePage = props => {
             )}
           </div>
         </div>
+        </space>
         <Route
           path={`/movies/:id/reviews`}
           render={props => <MovieReviews movie={movie} {...props} />}

@@ -3,7 +3,7 @@ import './creditKnown.css'
 
 
 const CreditKnown = ({credit}) => {
-  const {person={}} = credit
+  const {person={}, media={}} = credit
   
   return <div className={"wrap2"}>
      <div className={"name"}>{person.name}</div>
@@ -48,15 +48,15 @@ const CreditKnown = ({credit}) => {
         </li>
       </ul>
   
+      <ul className="list-group list-group-horizontal">
+        <li key="ruh" className="list-group-item list-group-item-dark">
+        character
+        </li>
+        <li key="rut" className="list-group-item ">
+          {media.character}
+        </li>
+      </ul>
     
-    <div className={"title0"}>gender:</div>
-    <div className={"name"}>{person.gender}</div>
-    <div className={"title0"}>birthday:</div>
-    <div className={"name"}>{person.birthday}</div>
-    <div className={"title0"}>Biography:</div>
-    <div className={"name"}>{person.biography}</div>
-    <div className={"title0"}>popularity:</div>
-    <div className={"name"}>{person.popularity}</div>
     <div className={"title0"}>known for</div>
     <div className={"known"}>
       {person.known_for.map(item=>(
