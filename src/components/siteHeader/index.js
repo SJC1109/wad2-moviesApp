@@ -47,9 +47,9 @@ const SiteHeader = () => {
               people
             </Link>
           </li>
-          <div class="dropdown">
-            <button class="dropbtn">Movie</button>
-            <div class="dropdown-content">
+          <div className="dropdown">
+            <button className="dropbtn">Movie</button>
+            <div className="dropdown-content">
               <a href="/movies/now_playing">Nowplaying</a>
               <a href="/movies/top_rated">Top</a>
               <a href="/movies/upcoming">Upcoming</a>

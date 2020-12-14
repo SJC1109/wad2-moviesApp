@@ -1,21 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Link, Route, withRouter } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import useMovie from "../hooks/useMovie";
-import {getMovieCredits} from '../api/tmdb-api'
 import SimilarMovies from "../components/similarMovies";
 import MovieCredits from "../components/movieCredits";
 
 const MoviePage = props => {
   const { id } = props.match.params;
   const [movie] = useMovie(id)  
-  const [setCasts] = useState([])
-
-  useEffect(()=>{
-    getMovieCredits(id).then(setCasts)
-  },[id])
 
   return (
     <>

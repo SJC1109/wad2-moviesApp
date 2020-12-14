@@ -11,7 +11,7 @@ const CreditPage = props => {
 
   useEffect(()=>{
     getCredit(id).then(setCredit)
-  },[])
+  },[id])
   
   return (
     <>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AddToNow_playingButton from '../components/buttons/addToNow_playing';
+import AddToNowPlayingButton from '../components/buttons/addToNow_playing';
 import PageTemplate from '../components/templateMovieListPage'
 import {MoviesContext} from '../contexts/moviesContext'
 
@@ -14,7 +14,7 @@ const Now_playingMoviePage = () => {
         title='Discover Movies'
         movies={movies}
         action={(movie) => {
-          return <AddToNow_playingButton movie={movie} />;
+          return <AddToNowPlayingButton movie={movie} />;
         }}
       />
   );
