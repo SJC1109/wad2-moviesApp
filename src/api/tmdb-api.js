@@ -42,17 +42,45 @@ export const getMovies = () => {
       .then(res => res.json())
       .then(json => json.results);
   };
-  export const getRelease_dates = id => {
+  
+  export const now_PlayingMovies = id => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/{movie_id}/release_dates?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
     )
       .then(res => res.json())
       .then(json => json.results);
   };
-  export const getCredit = id => {
+
+  export const getMovieCredits = (movieId) => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    )
+      .then(res => res.json())
+      .then(json => json.cast);
+  };
+  export const getCredit = (creditId) => {
+    return fetch(
+      `https://api.themoviedb.org/3/credit/${creditId}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then(res => res.json())
+  };
+  export const getSimilarMovies =(movieId) => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
     )
       .then(res => res.json())
       .then(json => json.results);
+  };
+  export const getPeoples = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    )
+      .then(res => res.json())
+      .then(json => json.results);
+  };
+
+  export const getPeople = id => {
+    return fetch(
+      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    ).then(res => res.json());
   };
