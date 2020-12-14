@@ -16,15 +16,24 @@ import topRatedPage from "./pages/topRatedPage";
 import now_playingPage from "./pages/now_playingMoviePage";
 import watchListPage from "./pages/watchListPage";
 import CreditPage from "./pages/creditPage";
+import PeoplePage from './pages/peoplePage'
+import PeopleDetailsPage from './pages/peopleDetailsPage'
+import PeoplesContextProvider from "./contexts/peoplesContext";
+
 const App = () => {
   return (
-      <BrowserRouter>
-        <div className="jumbotron">
-          <SiteHeader />      {/* New Header  */}
-          <div className="container-fluid">
-          <MoviesContextProvider> 
-          <GenresContextProvider>
-        <Switch>
+   <BrowserRouter>
+      <div className="jumbotron">
+        <SiteHeader /> 
+        <div className="container-fluid">
+          <MoviesContextProvider>     {/* NEW  */}
+          <PeoplesContextProvider>{/* NEW  */}
+
+          <GenresContextProvider>    {/* NEW */}
+        
+            <Switch> 
+            <Route exact path="/people" component={PeoplePage} />
+            <Route exact path="/people/:id" component={PeopleDetailsPage} />
           <Route exact path="/reviews/form" component={AddMovieReviewPage} />
           <Route exact path="/words/form" component={AddLeaveWordPage} />
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
@@ -37,13 +46,16 @@ const App = () => {
           <Route path="/credit/:id" component={CreditPage}/>
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />
-        </Switch>
-        </GenresContextProvider> 
-        </MoviesContextProvider> 
-      </div>
-    </div>
-  </BrowserRouter>
-  );
+          </Switch>
+         
+          
+         </GenresContextProvider>    {/* NEW */}
+         </PeoplesContextProvider>
+         </MoviesContextProvider>     {/* NEW */}
+       </div>
+     </div>
+   </BrowserRouter>
+   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root")); 
