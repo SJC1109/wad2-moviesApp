@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./movieCard.css";
 import "../../globals/fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Rate } from 'antd';
 import 'antd/dist/antd.css';
+import { HeartOutlined } from '@ant-design/icons';
 
 const MovieCard = ({movie, action}) => {
 
@@ -34,7 +36,7 @@ const MovieCard = ({movie, action}) => {
         </div>
         <div className="card-footer">
            {action(movie)}
-          
+           <Rate  defaultValue={4} character={<HeartOutlined />} allowHalf />
         </div>
       </div>
     </div>
