@@ -20,7 +20,8 @@ describe("Now playing Page ", () => {
   })
   beforeEach(() => {
     cy.visit("/")
-    cy.get("nav").find("li").eq(4).find("a").click();
+    cy.get('.dropdown-content').invoke('attr', 'style', 'display: block')
+    cy.get('.dropdown-content').find('a').eq(0).click()
   });
   
     describe("Base test", () => {

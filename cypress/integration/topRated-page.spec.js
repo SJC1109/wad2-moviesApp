@@ -20,7 +20,8 @@ describe("Top Rated Page ", () => {
   })
   beforeEach(() => {
     cy.visit("/")
-    cy.get("nav").find("li").eq(5).find("a").click();
+    cy.get('.dropdown-content').invoke('attr', 'style', 'display: block')
+    cy.get('.dropdown-content').find('a').eq(1).click()
   });
   
     describe("Base test", () => {
