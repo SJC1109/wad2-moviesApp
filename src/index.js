@@ -19,6 +19,12 @@ import CreditPage from "./pages/creditPage";
 import PeoplePage from './pages/peoplePage'
 import PeopleDetailsPage from './pages/peopleDetailsPage'
 import PeoplesContextProvider from "./contexts/peoplesContext";
+import AuthProvider from "./contexts/authContext"
+import signUpPage from "./pages/signUpPage";
+import loginPage from "./pages/loginPage";
+import PrivateRoute from "./components/privateRoute"
+import "bootstrap/dist/css/bootstrap.min.css"
+import ProfilePage from "./pages/profilePage";
 
 const App = () => {
   return (
@@ -30,13 +36,17 @@ const App = () => {
           <PeoplesContextProvider>{/* NEW  */}
 
           <GenresContextProvider>    {/* NEW */}
-        
+          <AuthProvider>
             <Switch> 
             <Route exact path="/people" component={PeoplePage} />
             <Route exact path="/people/:id" component={PeopleDetailsPage} />
+            
+          <Route exact path="/movies/signup" component={signUpPage} />
+          <Route exact path="/movies/login" component={loginPage} />
+          <PrivateRoute path="/movies/profile" component={ProfilePage} />
           <Route exact path="/reviews/form" component={AddMovieReviewPage} />
           <Route exact path="/words/form" component={AddLeaveWordPage} />
-          <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+          <PrivateRoute exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route exact path="/upcoming/watchlist" component={watchListPage} />
           <Route exact path="/movies/upcoming" component={upcomingMoviePage} />
           <Route exact path="/movies/now_playing" component={now_playingPage} />
@@ -45,10 +55,11 @@ const App = () => {
           <Route path="/reviews/:id" component={MovieReviewPage} />
           <Route path="/credit/:id" component={CreditPage}/>
           <Route path="/" component={HomePage} />
+          
           <Redirect from="*" to="/" />
           </Switch>
          
-          
+          </AuthProvider> 
          </GenresContextProvider>    {/* NEW */}
          </PeoplesContextProvider>
          </MoviesContextProvider>     {/* NEW */}

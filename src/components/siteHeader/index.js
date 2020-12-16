@@ -48,6 +48,7 @@ const SiteHeader = () => {
               People
             </Link>
           </li>
+
           <div class="dropdown">
             <button class="dropbtn">movies</button>
             <div class="dropdown-content">
@@ -66,8 +67,14 @@ const SiteHeader = () => {
                 Upcoming
                 </Link>
               </li>
-  </div>
-</div>
+           
+            </div>
+          </div>
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/profile">
+              Profile
+            </Link>
+          </li>
         </ul>
       </nav>
     </nav>
