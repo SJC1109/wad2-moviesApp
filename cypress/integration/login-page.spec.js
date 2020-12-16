@@ -32,7 +32,7 @@ describe("Login", () => {
             cy.get("button").contains("Log In").click()
             cy.get('.fade').contains("Failed to log in")
         });
-        it("should display 'There should be a @ in email' after after entering 1", () => {
+        it("should display 'There should be a @ in email' after entering 1", () => {
             cy.get("input").eq(0).clear().type("2")
             cy.get("button").contains("Log In").click()
             cy.get('p').contains("There should be a @ in email")
@@ -57,11 +57,6 @@ describe("Login", () => {
             cy.get("button").contains("Log In").click()
             cy.url().should("include", `/`);
             cy.get("#sjc")
-        });
-        it("should navigate to signup page ", () => {
-            cy.get('a[href*="/movies/signup"]').contains("Sign Up").click()
-            cy.url().should("include", `/movies/signup`);
-            cy.get("#login")
         });
     });
 })
