@@ -105,9 +105,61 @@ Name: Jiacheng Shen
 ## Independent learning (If relevant).
 
 . . . . . Briefly mention each technologies/techniques used in your project codebase that were not covered in the lectures/labs. Provide source code filename references to support your assertions and include reference material links (articles/blogs).
-
++ https://ant.design/components/overview-cn/ -ant design
++ https://www.youtube.com/watch?v=PKwu15ldZ7k&t=47s -firebase
 ---------------------------------
 
+# Assignment 1 - Agile Software Practice.
+
+Name: Jiacheng Shen
+
+## App Features.
+
+[Document each new feature/page in your Movies Fan app, including: Feature Name; Its objective/purpose; The associated test file; a screenshot of its UI.]
+e,g,
+ 
++ Movie Details page - Shows the details about a movie. The Show reviews button reveals an excerpt for each critic review of the movie.There are casts section and similar movie section below.
+
+Tests: cypress/integration/movieDetails-page.spec.js 
+
+![][movieDetails]
+
++ Home page: Displays the movielist of home and search the movies by genres and titles.
+
+Tests: cypress/integration/home-page.spec.js 
+
+![][homepage]
+
++ Login page: Users can log in with their username and password.
+
+Tests: cypress/integration/login-page.spec.js 
+
+![][logintest]
+
++ Top page: Displays toprated movies and view their detailed information.
+
+Tests: cypress/integration/topRated-page.spec.js 
+
+![][toptest]
+
+## Testing.
+
+Cypress Dashboard URL: https://dashboard.cypress.io/projects/k5t2fj/runs?branches=%5B%5D&committers=%5B%5D&flaky=%5B%5D&page=1&status=%5B%5D&tags=%5B%5D&timeRange=%7B%22startDate%22%3A%221970-01-01%22%2C%22endDate%22%3A%222038-01-19%22%7D
+
+### Advanced Testing (If required).
+
+[State briefly each instances of boundary and/or error/exceptional test case in your project]
+e.g.
+
++ cypress/integration/login-page.spec.js - test whether the username and password are valid. 
+
+## Independent learning (If relevant).
+
+[ Itemize each technologies/techniques used in your project that were not covered in the lectures/labs. Provide the necessary evidence of their use (e,g, project file names, screenshots, service URL, etc)
+
+List reference material links (articles/blogs).
++ Bunding and code-splitting
+---------------------------------
 [catalogue]: ./public/catalogue.png
 [homeUI]: ./public/homeUI.png
 [Login]: ./public/Login.png
@@ -121,3 +173,7 @@ Name: Jiacheng Shen
 [FullReview]: ./public/FullReview.png
 [Login1]: ./public/Login1.png
 [Image]: ./public/Image.png
+[movieDetails]: ./public/movieDetails.png
+[homepage]: ./public/homepage.png
+[logintest]: ./public/logintest.png
+[toptest]: ./public/toptest.png
