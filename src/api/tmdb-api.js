@@ -43,12 +43,13 @@ export const getMovies = () => {
       .then(json => json.results);
   };
   
-  export const now_PlayingMovies = id => {
+  export const now_PlayingMovies = () => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-    )
-      .then(res => res.json())
-      .then(json => json.results);
+       '/api/now_playing',{headers: {
+         'Authorization': window.localStorage.getItem('token')
+      }
+    }
+    ).then(res => res.json());
   };
 
   export const getMovieCredits = (movieId) => {
@@ -73,11 +74,13 @@ export const getMovies = () => {
   };
   export const getPeoples = () => {
     return fetch(
-      `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-    )
-      .then(res => res.json())
-      .then(json => json.results);
+       '/api/Peoples',{headers: {
+         'Authorization': window.localStorage.getItem('token')
+      }
+    }
+    ).then(res => res.json());
   };
+
 
   export const getPeople = id => {
     return fetch(
